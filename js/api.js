@@ -25,7 +25,7 @@ async function analyzeBrand() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                brandName: brand,
+                input: brand,
                 providers: ['chatgpt', 'google'] // Можно расширить
             })
         });
@@ -89,7 +89,7 @@ function displayResults(results) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6>Brand: ${results.brandName}</h6>
+                        <h6>Brand: ${brand}</h6>
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <div class="card">
@@ -186,7 +186,7 @@ function analyzeDemo() {
     setTimeout(() => {
         // Генерируем случайные результаты для демо
         const demoResults = {
-            brandName: brand,
+            input: brand,
             chatgptScore: Math.floor(Math.random() * 60) + 20,
             googleScore: Math.floor(Math.random() * 50) + 15,
             recommendations: [
