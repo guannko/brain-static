@@ -1,5 +1,5 @@
 // Brain Index API Connection
-const API_URL = 'http://localhost:3000/api'; // Позже заменим на production URL
+const API_URL = 'https://brain-index-geo-monolith-production.up.railway.app/api'; // Позже заменим на production URL
 
 // Анализ бренда
 async function analyzeBrand() {
