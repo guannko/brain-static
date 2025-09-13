@@ -89,7 +89,7 @@ function displayResults(results) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6>Brand: ${brand}</h6>
+                        <h6>Brand: ${results.input || "Unknown"}</h6>
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <div class="card">
