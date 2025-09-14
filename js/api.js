@@ -96,8 +96,8 @@ function displayResults(results) {
                                     <div class="card-body">
                                         <h6 class="card-title">ChatGPT Visibility</h6>
                                         <div class="progress">
-                                            <div class="progress-bar bg-success" style="width: ${results.result.chatgpt || 0}%">
-                                                ${results.result.chatgpt || 0}%
+                                            <div class="progress-bar bg-success" style="width: ${results.chatgpt || 0}%">
+                                                ${results.chatgpt || 0}%
                                             </div>
                                         </div>
                                         <small class="text-muted">How well ChatGPT knows your brand</small>
@@ -109,8 +109,8 @@ function displayResults(results) {
                                     <div class="card-body">
                                         <h6 class="card-title">Google AI Visibility</h6>
                                         <div class="progress">
-                                            <div class="progress-bar bg-info" style="width: ${results.result.google || 0}%">
-                                                ${results.result.google || 0}%
+                                            <div class="progress-bar bg-info" style="width: ${results.google || 0}%">
+                                                ${results.google || 0}%
                                             </div>
                                         </div>
                                         <small class="text-muted">Your presence in Google AI results</small>
