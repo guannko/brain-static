@@ -1,5 +1,8 @@
 // Brain Index API Connection
-const API_URL = 'https://brain-index-geo-monolith-production.up.railway.app/api'; // Позже заменим на production URL
+const API_URL = 'https://brain-index-geo-monolith-production.up.railway.app/api';
+
+// Глобальная переменная для хранения текущего бренда
+let currentBrand = '';
 
 // Анализ бренда
 async function analyzeBrand() {
@@ -10,6 +13,9 @@ async function analyzeBrand() {
         showNotification('Please enter your brand name', 'warning');
         return;
     }
+    
+    // Сохраняем название бренда
+    currentBrand = brand;
     
     // Показываем индикатор загрузки
     const button = event.target;
@@ -26,7 +32,7 @@ async function analyzeBrand() {
             },
             body: JSON.stringify({
                 input: brand,
-                providers: ['chatgpt', 'google'] // Можно расширить
+                providers: ['chatgpt', 'google']
             })
         });
         
@@ -40,7 +46,7 @@ async function analyzeBrand() {
         const jobId = data.jobId;
         
         // Ждём результаты
-        checkJobStatus(jobId, button, originalText);
+        checkJobStatus(jobId, button, originalText, brand);
         
     } catch (error) {
         console.error('Error:', error);
@@ -51,12 +57,14 @@ async function analyzeBrand() {
 }
 
 // Проверка статуса задачи
-async function checkJobStatus(jobId, button, originalText) {
+async function checkJobStatus(jobId, button, originalText, brand) {
     try {
         const response = await fetch(`${API_URL}/analyzer/results/${jobId}`);
         const data = await response.json();
         
         if (data.status === 'completed') {
+            // Добавляем название бренда к результатам
+            data.result.brandName = brand || currentBrand;
             // Показываем результаты
             displayResults(data.result);
             button.disabled = false;
@@ -65,7 +73,7 @@ async function checkJobStatus(jobId, button, originalText) {
             throw new Error('Analysis failed');
         } else {
             // Проверяем снова через 2 секунды
-            setTimeout(() => checkJobStatus(jobId, button, originalText), 2000);
+            setTimeout(() => checkJobStatus(jobId, button, originalText, brand), 2000);
         }
     } catch (error) {
         console.error('Error:', error);
@@ -89,7 +97,7 @@ function displayResults(results) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6>Brand: ${results.input || "Unknown"}</h6>
+                        <h6>Brand: ${results.brandName || currentBrand || "Unknown"}</h6>
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <div class="card">
@@ -186,9 +194,9 @@ function analyzeDemo() {
     setTimeout(() => {
         // Генерируем случайные результаты для демо
         const demoResults = {
-            input: brand,
-            chatgptScore: Math.floor(Math.random() * 60) + 20,
-            googleScore: Math.floor(Math.random() * 50) + 15,
+            brandName: brand,
+            chatgpt: Math.floor(Math.random() * 60) + 20,
+            google: Math.floor(Math.random() * 50) + 15,
             recommendations: [
                 'Create detailed product descriptions with structured data',
                 'Optimize your website for AI crawlers',
