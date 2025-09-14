@@ -1,0 +1,12 @@
+{
+  "root": ".",
+  "clean_urls": false,
+  "error_page": "404.html",
+  "routes": {
+    "/": "index.html",
+    "/login": "login.html",
+    "/register": "register.html",
+    "/dashboard": "dashboard.html",
+    "/pricing": "pricing.html"
+  }
+}
