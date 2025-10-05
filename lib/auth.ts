@@ -1,56 +1,37 @@
-import { jwtVerify, SignJWT } from 'jose'
+import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
-import { NextRequest, NextResponse } from 'next/server'
 
-const secretKey = process.env.JWT_SECRET || 'brain-index-secret-key-change-in-production'
+const secretKey = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
 const key = new TextEncoder().encode(secretKey)
 
-export interface UserPayload {
-  id: string
-  email: string
-  name: string
-  role: 'admin' | 'user'
-  plan: 'free' | 'starter' | 'professional' | 'enterprise'
-}
-
-export async function encrypt(payload: UserPayload) {
-  return await new SignJWT(payload as any)
+export async function encrypt(payload: any) {
+  return await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime('24h')
+    .setExpirationTime('7d')
     .sign(key)
 }
 
-export async function decrypt(input: string): Promise<UserPayload | null> {
+export async function decrypt(input: string): Promise<any> {
   try {
     const { payload } = await jwtVerify(input, key, {
       algorithms: ['HS256'],
     })
-    return payload as unknown as UserPayload
+    return payload
   } catch (error) {
     return null
   }
 }
 
-export async function login(email: string, password: string) {
-  // Mock authentication - in production, verify against Railway PostgreSQL
-  const user: UserPayload = {
-    id: '1',
-    email,
-    name: email.split('@')[0],
-    role: email === 'admin@brainindex.ai' ? 'admin' : 'user',
-    plan: 'professional',
-  }
-
-  const expires = new Date(Date.now() + 24 * 60 * 60 * 1000)
-  const session = await encrypt(user)
-
-  cookies().set('session', session, { expires, httpOnly: true })
-  return user
-}
-
-export async function logout() {
-  cookies().set('session', '', { expires: new Date(0) })
+export async function createSession(userId: string, email: string, role: string = 'user') {
+  const session = await encrypt({ userId, email, role })
+  
+  cookies().set('session', session, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+  })
 }
 
 export async function getSession() {
@@ -59,20 +40,6 @@ export async function getSession() {
   return await decrypt(session)
 }
 
-export async function updateSession(request: NextRequest) {
-  const session = request.cookies.get('session')?.value
-  if (!session) return
-
-  const parsed = await decrypt(session)
-  if (!parsed) return
-
-  const expires = new Date(Date.now() + 24 * 60 * 60 * 1000)
-  const res = NextResponse.next()
-  res.cookies.set({
-    name: 'session',
-    value: await encrypt(parsed),
-    httpOnly: true,
-    expires: expires,
-  })
-  return res
+export function deleteSession() {
+  cookies().delete('session')
 }
