@@ -1,28 +1,43 @@
 {
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "env": {
+    "JWT_SECRET": "@jwt_secret",
+    "DATABASE_URL": "@database_url", 
+    "REDIS_URL": "@redis_url",
+    "OPENAI_API_KEY": "@openai_api_key"
+  },
+  "functions": {
+    "app/api/**/*.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
   "rewrites": [
-    { "source": "/login", "destination": "/login.html" },
-    { "source": "/register", "destination": "/register.html" },
-    { "source": "/dashboard", "destination": "/dashboard.html" },
-    { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/admin", "destination": "/admin.html" }
-  ],
-  "headers": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "source": "/admin.html",
+      "destination": "/admin"
+    },
+    {
+      "source": "/dashboard.html", 
+      "destination": "/dashboard"
+    },
+    {
+      "source": "/login.html",
+      "destination": "/login"
+    },
+    {
+      "source": "/register.html",
+      "destination": "/register"
+    },
+    {
+      "source": "/marketplace.html",
+      "destination": "/marketplace"
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/pricing"
     }
   ]
 }
