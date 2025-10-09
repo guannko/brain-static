@@ -7,100 +7,126 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
+          {/* Brand - Original Style */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-gray-800">
-              🧠 Brain Index <span className="text-blue-600">GEO</span>
+            <span className="text-2xl font-extrabold text-black">
+              BRAIN
+            </span>
+            <span className="text-2xl font-normal text-orange-500">
+              INDEX
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               href="/" 
-              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors font-medium"
             >
-              Главная
+              Home
+            </Link>
+            <Link 
+              href="#features" 
+              className="text-gray-800 hover:text-blue-600 transition-colors font-medium"
+            >
+              Features
+            </Link>
+            <Link 
+              href="#how-it-works" 
+              className="text-gray-800 hover:text-blue-600 transition-colors font-medium"
+            >
+              How it Works
             </Link>
             <Link 
               href="/pricing" 
-              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors font-medium"
             >
-              Тарифы
+              Pricing
             </Link>
-            <Link 
-              href="/analyze" 
-              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-            >
-              Анализ
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-            >
-              Контакты
-            </Link>
+          </div>
+
+          {/* Right Side - Login/Signup */}
+          <div className="hidden md:flex items-center space-x-4">
             <Link 
               href="/login" 
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="text-gray-800 hover:text-blue-600 transition-colors font-medium flex items-center"
             >
-              Войти
+              <span className="mr-2">🔑</span>
+              Login
+            </Link>
+            <Link 
+              href="/register" 
+              className="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50 transition-colors font-medium flex items-center"
+            >
+              <span className="mr-2">👤</span>
+              Sign Up
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex flex-col space-y-1"
+            className="md:hidden flex flex-col space-y-1 p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <span className="w-6 h-0.5 bg-gray-600"></span>
-            <span className="w-6 h-0.5 bg-gray-600"></span>
-            <span className="w-6 h-0.5 bg-gray-600"></span>
+            <span className="w-6 h-0.5 bg-gray-600 transition-all"></span>
+            <span className="w-6 h-0.5 bg-gray-600 transition-all"></span>
+            <span className="w-6 h-0.5 bg-gray-600 transition-all"></span>
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4">
+          <div className="md:hidden border-t border-gray-200 py-4 bg-white">
             <div className="flex flex-col space-y-4">
               <Link 
                 href="/" 
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-800 hover:text-blue-600 transition-colors font-medium px-4 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Главная
+                Home
+              </Link>
+              <Link 
+                href="#features" 
+                className="text-gray-800 hover:text-blue-600 transition-colors font-medium px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Features
+              </Link>
+              <Link 
+                href="#how-it-works" 
+                className="text-gray-800 hover:text-blue-600 transition-colors font-medium px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                How it Works
               </Link>
               <Link 
                 href="/pricing" 
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-800 hover:text-blue-600 transition-colors font-medium px-4 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Тарифы
+                Pricing
               </Link>
-              <Link 
-                href="/analyze" 
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Анализ
-              </Link>
-              <Link 
-                href="/contact" 
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Контакты
-              </Link>
-              <Link 
-                href="/login" 
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Войти
-              </Link>
+              <div className="border-t border-gray-200 pt-4">
+                <Link 
+                  href="/login" 
+                  className="text-gray-800 hover:text-blue-600 transition-colors font-medium flex items-center px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span className="mr-2">🔑</span>
+                  Login
+                </Link>
+                <Link 
+                  href="/register" 
+                  className="border border-blue-600 text-blue-600 mx-4 mt-2 px-4 py-2 rounded hover:bg-blue-50 transition-colors font-medium text-center flex items-center justify-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <span className="mr-2">👤</span>
+                  Sign Up
+                </Link>
+              </div>
             </div>
           </div>
         )}
