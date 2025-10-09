@@ -1,7 +1,10 @@
+// Temporarily using fallback secret for initial deployment
+// This will be replaced with proper Vercel secret in ЭТАП 2
+
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 
-const secretKey = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
+const secretKey = process.env.JWT_SECRET || 'brain-index-temporary-secret-key-for-deployment-testing-2025'
 const key = new TextEncoder().encode(secretKey)
 
 export async function encrypt(payload: any) {
