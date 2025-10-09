@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
+import QuickAnalysis from '../components/QuickAnalysis'
+import CTASection from '../components/CTASection'
 
 export const metadata: Metadata = {
   title: 'Brain Index - AI Visibility Analytics Platform | GEO для бизнеса',
@@ -54,26 +56,7 @@ export default function HomePage() {
             </div>
 
             {/* Quick Analysis Card */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h3 className="text-2xl font-bold text-center mb-6 text-gray-900">Quick Analysis</h3>
-              <div className="space-y-4">
-                <input 
-                  type="text" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
-                  placeholder="Enter your brand name"
-                  id="brandInput"
-                />
-                <button 
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
-                  onClick={() => console.log('Analyze brand')}
-                >
-                  🔍 Check AI Visibility
-                </button>
-                <p className="text-center text-gray-500 text-sm">
-                  Free analysis • No credit card required
-                </p>
-              </div>
-            </div>
+            <QuickAnalysis />
           </div>
         </div>
       </section>
@@ -399,27 +382,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Dominate AI Search?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-            Get your free AI visibility report and discover how to improve your presence across all major AI platforms.
-          </p>
-          
-          <div className="max-w-md mx-auto flex gap-4">
-            <input 
-              type="email" 
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 border-0"
-              placeholder="Enter your email"
-            />
-            <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-              Get Free Report
-            </button>
-          </div>
-          
-          <p className="text-sm mt-4 opacity-75">No spam, ever. Unsubscribe anytime.</p>
-        </div>
-      </section>
+      <CTASection />
     </>
   )
 }
