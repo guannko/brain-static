@@ -3,12 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "installCommand": "npm install",
-  "env": {
-    "JWT_SECRET": "@jwt_secret",
-    "DATABASE_URL": "@database_url", 
-    "REDIS_URL": "@redis_url",
-    "OPENAI_API_KEY": "@openai_api_key"
-  },
   "functions": {
     "app/api/**/*.ts": {
       "runtime": "@vercel/node"
