@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Brain Index - AI Visibility Analytics Platform</title>
+  <title>Brain Index - Ваш бренд теряет клиентов в AI-поиске?</title>
+  <meta name="description" content="Проверим бесплатно за 2 минуты, как ChatGPT, Claude и другие AI рекомендуют ваших конкурентов вместо вас. 37% поисков проходят через AI-системы - получите детальный анализ видимости.">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
@@ -41,6 +42,49 @@
       header,
       .view {
         height: 700px;
+      }
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .stat-text {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    .urgency-message {
+      background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      .stat-number {
+        font-size: 2rem;
       }
     }
   </style>
@@ -109,19 +153,40 @@
           <div class="row d-flex h-100 justify-content-center align-items-center wow fadeIn">
             <!--Grid column-->
             <div class="col-md-6 mb-4 white-text text-center text-md-left">
-              <h1 class="display-4 font-weight-bold">Is Your Brand Visible in AI?</h1>
+              <h1 class="display-4 font-weight-bold">Ваш бренд теряет клиентов в AI-поиске? Проверим бесплатно за 2 минуты.</h1>
               <hr class="hr-light">
-              <p>
-                <strong>Check how ChatGPT, Claude, and other AI systems see your brand</strong>
+              <p class="lead mb-4">
+                Узнайте, как ChatGPT, Claude и другие AI рекомендуют ваших конкурентов, а не вас. 
+                <strong>37% поисков теперь проходят через AI-системы</strong> — получите детальный анализ 
+                видимости вашего бренда в 10+ AI-платформах и план действий по исправлению.
               </p>
-              <p class="mb-4 d-none d-md-block">
-                <strong>Discover your AI visibility score, track competitors, and get actionable insights to improve your presence in AI-powered search results.</strong>
-              </p>
-              <a href="#analyze" class="btn btn-outline-white">Analyze Now
-                <i class="fas fa-search ml-2"></i>
+
+              <!-- Stats Section -->
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <div class="stat-number">37%</div>
+                  <div class="stat-text">поисков через AI</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">60M+</div>
+                  <div class="stat-text">пользователей ChatGPT</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-text">компаний доверяют Brain Index</div>
+                </div>
+              </div>
+
+              <!-- Urgency Message -->
+              <div class="urgency-message">
+                ⚡ Осталось <strong>3 бесплатных анализа</strong> сегодня!
+              </div>
+
+              <a href="#analyze" class="btn btn-outline-white btn-lg mr-3">
+                Получить бесплатный AI-audit <i class="fas fa-arrow-right ml-2"></i>
               </a>
-              <a href="#features" class="btn btn-outline-white">Learn More
-                <i class="fas fa-arrow-right ml-2"></i>
+              <a href="#features" class="btn btn-outline-white">
+                Как это работает <i class="fas fa-arrow-down ml-2"></i>
               </a>
             </div>
             <!--Grid column-->
@@ -130,14 +195,14 @@
             <div class="col-md-6 col-xl-5 mb-4">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="text-center mb-4">Quick Analysis</h3>
+                  <h3 class="text-center mb-4">Быстрый анализ</h3>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="brandInput" placeholder="Enter your brand name">
+                    <input type="text" class="form-control" id="brandInput" placeholder="Введите название вашего бренда">
                   </div>
                   <button class="btn btn-primary btn-block" onclick="analyzeBrand()">
-                    <i class="fas fa-search mr-2"></i>Check AI Visibility
+                    <i class="fas fa-search mr-2"></i>Проверить видимость в AI
                   </button>
-                  <p class="text-center mt-3 small">Free analysis • No credit card required</p>
+                  <p class="text-center mt-3 small">Бесплатный анализ • Без регистрации • Результат за 2 минуты</p>
                 </div>
               </div>
             </div>
@@ -190,6 +255,55 @@
         <!--Grid row-->
       </section>
       <!--Section: Main info-->
+
+      <hr class="my-5">
+
+      <!--Section: How It Works-->
+      <section class="my-5" id="how-it-works">
+        <h2 class="h1-responsive font-weight-bold text-center my-5">Как это работает</h2>
+        <p class="lead grey-text text-center w-responsive mx-auto mb-5">
+          Простой 3-шаговый процесс для анализа видимости вашего бренда в AI
+        </p>
+
+        <div class="row text-center">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="mb-3">
+                  <i class="fas fa-search fa-3x text-primary"></i>
+                </div>
+                <h4><span class="badge badge-primary">1</span> Анализ</h4>
+                <p class="lead">Вводите название бренда, мы проверяем его в 10+ AI-системах: ChatGPT, Claude, Gemini, Perplexity и других</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="mb-3">
+                  <i class="fas fa-robot fa-3x text-success"></i>
+                </div>
+                <h4><span class="badge badge-success">2</span> AI-проверка</h4>
+                <p class="lead">Наши алгоритмы анализируют, как AI рекомендует ваш бренд, и сравнивают с конкурентами</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="mb-3">
+                  <i class="fas fa-chart-line fa-3x text-info"></i>
+                </div>
+                <h4><span class="badge badge-info">3</span> Отчёт</h4>
+                <p class="lead">Получаете подробный отчёт с оценкой видимости и планом действий для улучшения</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: How It Works-->
 
       <hr class="my-5">
 
@@ -614,20 +728,23 @@
           <!--/Grid column-->
 
           <!--Grid column-->
-          <div class="col-lg-6 col-md-12" id="how-it-works">
-            <p class="h5 text-center mb-4">How It Works</p>
+          <div class="col-lg-6 col-md-12">
+            <p class="h5 text-center mb-4">Platform Features</p>
             <div class="text-center">
               <div class="mb-4">
-                <h4><span class="badge badge-primary">1</span> Enter Your Brand</h4>
-                <p class="lead">Type your company or product name</p>
+                <i class="fas fa-search fa-2x text-primary mb-3"></i>
+                <h5>Анализ 10+ AI-систем</h5>
+                <p class="text-muted">ChatGPT, Claude, Gemini, Perplexity, Copilot и других</p>
               </div>
               <div class="mb-4">
-                <h4><span class="badge badge-primary">2</span> AI Analysis</h4>
-                <p class="lead">We check multiple AI systems</p>
+                <i class="fas fa-clock fa-2x text-success mb-3"></i>
+                <h5>Мониторинг в реальном времени</h5>
+                <p class="text-muted">Отслеживание изменений 24/7</p>
               </div>
               <div class="mb-4">
-                <h4><span class="badge badge-primary">3</span> Get Insights</h4>
-                <p class="lead">Receive detailed report with recommendations</p>
+                <i class="fas fa-users fa-2x text-info mb-3"></i>
+                <h5>Анализ конкурентов</h5>
+                <p class="text-muted">Сравнение с лидерами отрасли</p>
               </div>
             </div>
           </div>
